@@ -22,7 +22,7 @@
 
 import { onClickOutside } from '@vueuse/core'
 import {ref} from 'vue'
-import {useStoreNote} from '@/stores/storeNotes'
+import {useStoreNotes} from '@/stores/storeNotes'
 
 /* props */
 
