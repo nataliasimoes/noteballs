@@ -21,7 +21,7 @@
 <script setup>
 /* imports */
 
-import {ref} from 'vue'
+import {ref, watch} from 'vue'
 import AddNewNote from '@/components/notes/AddNewNote.vue'
 import Note from '@/components/notes/Note.vue'
 import {useStoreNotes} from '@/stores/storeNotes'
@@ -40,6 +40,14 @@ const addNewNote = () => {
     newNote.value = ''
     addEditNoteRef.value.focusTextarea()
 }
+
+/* watch characters */
+
+  watch(newNote, (newValue) => {
+    if(newValue.length === 600){
+      alert('Only 600 characters')
+    }
+  })
 
 
 </script>

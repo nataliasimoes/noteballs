@@ -1,5 +1,5 @@
 import NoteViews from '@/views/NoteViews.vue'
-import NoteStarts from '@/views/NoteStarts.vue'
+import NoteStats from '@/views/NoteStats.vue'
 import NoteEdit from '@/views/NoteEdit.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
@@ -16,9 +16,9 @@ const routes =  [
         component: NoteEdit
     },
     {
-        path: '/starts',
-        name: 'starts',
-        component: NoteStarts
+        path: '/stats',
+        name: 'stats',
+        component: NoteStats
     }
 ]
 

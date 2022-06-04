@@ -9,8 +9,8 @@
       </div>
     </div>
     <footer class="card-footer">
-      <router-link href="#" :to="`/noteEdit/${note.id}`" class="card-footer-item">Editar</router-link>
-      <a href="#" class="card-footer-item" @click.prevent="storeNotes.deleteNote(note.id)">Deletar</a>
+      <router-link href="#" :to="`/noteEdit/${note.id}`" class="card-footer-item has-text-success-dark">Editar</router-link>
+      <a href="#" class="card-footer-item has-text-success-dark" @click.prevent="storeNotes.deleteNote(note.id)">Deletar</a>
     </footer>
   </div>
 </template>

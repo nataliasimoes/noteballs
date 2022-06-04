@@ -1,16 +1,16 @@
 <template>
   <div>
-    <AddNewNote v-model="noteContent" bgColor="link" ref="addEditNoteRef">
+    <AddNewNote v-model="noteContent" bgColor="success" label="Editar Nota" ref="addEditNoteRef">
       <template #buttons>
         <button
           @click="$router.back()"
-          class="button is-link is-light mr-2"
+          class="button is-success is-light mr-2"
         >
           Cancelar
         </button>
         <button
         @click="saveClicked"
-          class="button is-link has-link-success"
+          class="button is-success has-success-success"
           :disabled="!noteContent"
           placeholder="Edit note"
         >
