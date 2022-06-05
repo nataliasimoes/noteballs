@@ -3,17 +3,17 @@
     <table class="table is-fullwidth">
       <thead>
         <tr>
-          <th>Stat</th>
-          <th>Value</th>
+          <th>{{$t('noteStats.stat')}}</th>
+          <th>{{$t('noteStats.value')}}</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Number of Notes</td>
+          <td>{{$t('noteStats.numberNotes')}}</td>
           <td>{{storeNotes.totalNotesCount}}</td>
         </tr>
         <tr>
-          <td>Number of Characters (all notes)</td>
+          <td>{{$t('noteStats.numberCharacters')}}</td>
           <td>{{storeNotes.totalLengthCharacters}}</td>
         </tr>
       </tbody>

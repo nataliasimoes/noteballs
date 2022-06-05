@@ -23,10 +23,10 @@
       <div id="navbarBasicExample" ref="navBarMenuRef" class="navbar-menu " :class="{ 'is-active' : showModalMobile}">
         <div class="navbar-end">
           <RouterLink  @click="showModalMobile = false" active-class="is-active" to="/" class="navbar-item">
-            Notes
+            {{$t('main.notes')}}
           </RouterLink>
           <RouterLink @click="showModalMobile = false" active-class="is-active" to="/stats" class="navbar-item">
-            Stats
+            {{$t('main.stats')}}
           </RouterLink>
         </div>
       </div>

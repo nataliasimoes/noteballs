@@ -1,12 +1,12 @@
 <template>
   <div class="notes">
-    <AddNewNote v-model="newNote" placeholder="Add a new note" ref="addEditNoteRef"> 
+    <AddNewNote v-model="newNote" :placeholder="$t('noteViews.addNewNotePlaceholder')" ref="addEditNoteRef"> 
       <template #buttons>
         <button
           :disabled="!newNote"
           @click="addNewNote"
           class="button is-link has-background-success"
-        >Adicionar Nota</button>
+        >{{$t('noteViews.addNewNote')}}</button>
       </template>
     </AddNewNote>
 

@@ -1,20 +1,19 @@
 <template>
   <div>
-    <AddNewNote v-model="noteContent" bgColor="success" label="Editar Nota" ref="addEditNoteRef">
+    <AddNewNote v-model="noteContent" bgColor="success" label="Editar Nota" ref="addEditNoteRef" :placeholder="$t('noteEdit.editNotePlaceholder')">
       <template #buttons>
         <button
           @click="$router.back()"
           class="button is-success is-light mr-2"
         >
-          Cancelar
+          {{$t('main.cancel')}}
         </button>
         <button
         @click="saveClicked"
           class="button is-success has-success-success"
           :disabled="!noteContent"
-          placeholder="Edit note"
         >
-          Salvar Nota
+          {{$t('main.save')}}
         </button>
       </template>
     </AddNewNote>
@@ -43,6 +42,8 @@ const noteContent = ref('')
 noteContent.value = storeNotes.getNoteContent(route.params.id)
 
 /*save clicked */
+
+
 
 const saveClicked = () => {
     storeNotes.updateNote(route.params.id, noteContent.value)

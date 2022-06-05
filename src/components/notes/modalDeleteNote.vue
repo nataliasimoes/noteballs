@@ -3,15 +3,15 @@
     <div class="modal-background"></div>
     <div class="modal-card" ref="modalCardRef">
       <header class="modal-card-head">
-        <p class="modal-card-title">Delete Note</p>
+        <p class="modal-card-title">{{$t('modalDeleteNote.deleteNote')}}</p>
         <button class="delete" aria-label="close" @click="closeModal"></button>
       </header>
       <section class="modal-card-body">
-       Are you sure you want to delte this note?
+       {{$t('modalDeleteNote.modalCardDeleteText')}}
       </section>
       <footer class="modal-card-foot is-justify-content-end">
-        <button class="button" @click="closeModal">Cancel</button>
-        <button class="button is-danger" @click="storeNotes.deleteNote(noteId)">Delete</button>
+        <button class="button" @click="closeModal">{{$t('main.cancel')}}</button>
+        <button class="button is-danger" @click="storeNotes.deleteNote(noteId)">{{$t('main.delete')}}</button>
       </footer>
     </div>
   </div>

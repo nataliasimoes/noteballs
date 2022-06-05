@@ -9,8 +9,8 @@
       </div>
     </div>
     <footer class="card-footer">
-      <router-link href="#" :to="`/noteEdit/${note.id}`" class="card-footer-item has-text-success-dark">Editar</router-link>
-      <a href="#" class="card-footer-item has-text-success-dark" @click.prevent="modals.deleteNote = true">Deletar</a>
+      <router-link href="#" :to="`/noteEdit/${note.id}`" class="card-footer-item has-text-success-dark">{{$t('main.edit')}}</router-link>
+      <a href="#" class="card-footer-item has-text-success-dark" @click.prevent="modals.deleteNote = true">{{$t('main.delete')}}</a>
     </footer>
     <ModalDeleteNote :noteId="note.id" v-if="modals.deleteNote" v-model="modals.deleteNote"/>
   </div>
