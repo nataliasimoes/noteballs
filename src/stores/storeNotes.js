@@ -1,37 +1,48 @@
 import { defineStore } from 'pinia'
+import { collection, onSnapshot, doc, setDoc } from 'firebase/firestore'
+import { db } from '../js/firebase'
+const notesCollectionRef = collection(db, "notes")
 
 export const useStoreNotes = defineStore('storeNotes', {
     state: () => {
         return {
             notes: [
-                {
-                    id: '1',
-                    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neiaculis mauris.'
-                },
-                {
-                    id: '2',
-                    content: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
-                }
             ]
         }
     },
     actions: {
-        addNote(newNoteContent) {
+        async getNotes() {
+            onSnapshot(notesCollectionRef, (querySnapshot) => {
+                let notes = []
+                querySnapshot.forEach((doc) => {
+                    let note = {
+                        id: doc.id,
+                        content: doc.data().content
+                    }
+                    notes.push(note)
+                })
+                this.notes = notes
+            })
+        },
+        async addNote(newNoteContent) {
             let currentTime = new Date().getTime(),
                 id = currentTime.toString()
 
-            let note = {
-                id,
-                content: newNoteContent
-            }
+            // let note = {
+            //     id,
+            //     content: newNoteContent
+            // }
 
-            this.notes.unshift(note) 
+            // this.notes.unshift(note)
+            await setDoc(doc(notesCollectionRef, id), {
+                content: newNoteContent
+              });
         },
         deleteNote(idToDelete) {
             this.notes = this.notes.filter(note => note.id !== idToDelete)
         },
-        updateNote(id, content){
-            let index = this.notes.findIndex( note => {
+        updateNote(id, content) {
+            let index = this.notes.findIndex(note => {
                 return note.id === id
             })
             this.notes[index].content = content
@@ -40,18 +51,18 @@ export const useStoreNotes = defineStore('storeNotes', {
     getters: {
         getNoteContent: (state) => {
             return (id) => {
-               return state.notes.filter(note => {
-                   return note.id === id
-               })[0].content
+                return state.notes.filter(note => {
+                    return note.id === id
+                })[0].content
             }
-        }, 
-        totalNotesCount: (state)  => {
+        },
+        totalNotesCount: (state) => {
             return state.notes.length
         },
         totalLengthCharacters: (state) => {
             let count = 0
             state.notes.forEach(note => {
-                count+=note.content.length
+                count += note.content.length
             })
             return count
         }

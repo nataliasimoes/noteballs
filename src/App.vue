@@ -6,7 +6,20 @@
 </template>
 
 <script setup>
+/* imports */
+import {onMounted} from 'vue'
 import NavBar from "@/components/layout/NavBar.vue";
+import {useStoreNotes} from '@/stores/storeNotes'
+
+/* store */
+
+const storeNotes = useStoreNotes()
+
+/* mountend */
+
+  onMounted(() => {
+    storeNotes.getNotes()
+  })
 </script>
 
 <style>
